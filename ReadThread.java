@@ -5,8 +5,8 @@ import java.net.*;
 
 public class ReadThread extends Thread {
     private BufferedReader reader;
-    private Socket Sockert;
-    private ChatClient Client;
+    private Socket socket;
+    private ChatClient client;
 
     public ReadThread(Socket socket, ChatClient client) {
         this.socket = socket;

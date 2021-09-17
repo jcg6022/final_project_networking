@@ -15,7 +15,7 @@ public class ChatClient {
   public void execute () {
     try {
       Socket socket  = new Socket(hostname, port);
-      System.out.println("Connecte to the chast server");
+      System.out.println("Connected to the chast server");
 
       new ReadThread(socket, this). start();
       new WriteThread(socket, this). start();

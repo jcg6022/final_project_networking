@@ -1,6 +1,6 @@
 package net.codejava.networking.chat.client;
 
-improt java.io.*;
+import java.io.*;
 import java.net.*;
 
 public class WriteThread extends Thread {
@@ -23,7 +23,7 @@ public class WriteThread extends Thread {
     public void run() {
       Console console = System.console();
 
-      String userName = console.readLine("\nEnter your name:");
+      String userName = console.readLine("\nEnter your name: ");
       client.setUserName(userName);
       writer.println(userName);
 
