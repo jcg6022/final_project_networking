@@ -1,9 +1,12 @@
-package net.codejava.networking.chat.server;
-
 import java.io.*;
 import java.net.*;
 import java.util.*;
 
+/**
+ * This thread handles connection for each connected client, so the server
+ * can handle multiple clients at the same time.
+ *
+ */
 public class UserThread extends Thread {
     private Socket socket;
     private ChatServer server;
@@ -19,7 +22,7 @@ public class UserThread extends Thread {
             InputStream input = socket.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
 
-            OutputStrem output = socket.getOutputStream();
+            OutputStream output = socket.getOutputStream();
             writer = new PrintWriter(output, true);
 
             printUsers();
@@ -27,7 +30,7 @@ public class UserThread extends Thread {
             String userName = reader.readLine();
             server.addUserName(userName);
 
-            String serverMessage = "New user connected:" + userName;
+            String serverMessage = "New user connected: " + userName;
             server.broadcast(serverMessage, this);
 
             String clientMessage;
@@ -44,12 +47,16 @@ public class UserThread extends Thread {
 
             serverMessage = userName + " has quitted.";
             server.broadcast(serverMessage, this);
+
         } catch (IOException ex) {
             System.out.println("Error in UserThread: " + ex.getMessage());
             ex.printStackTrace();
         }
     }
 
+    /**
+     * Sends a list of online users to the newly connected user.
+     */
     void printUsers() {
         if (server.hasUsers()) {
             writer.println("Connected users: " + server.getUserNames());
@@ -58,6 +65,9 @@ public class UserThread extends Thread {
         }
     }
 
+    /**
+     * Sends a message to the client.
+     */
     void sendMessage(String message) {
         writer.println(message);
     }
