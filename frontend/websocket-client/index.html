@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <title>WebSocket | Chat</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Chat room</h1>
+
+      <div class="messages-container">
+        <ul id="messages" class="is-flex flex-column">
+          <li>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora
+            veritatis laudantium soluta eveniet, nam asperiores ullam
+            perferendis voluptatem quasi aut voluptas consequatur, illo earum
+            architecto facilis reprehenderit corrupti autem dolor!
+          </li>
+        </ul>
+      </div>
+
+      <div class="is-flex">
+        <div class="is-fullwidth">
+          <label for="message" aria-label="message"></label>
+          <input type="text" id="message" placeholder="Send a message" />
+        </div>
+        <button type="button" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+    <script src="scripts/index.js"></script>
+  </body>
+</html>
